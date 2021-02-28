@@ -164,52 +164,53 @@ export default function ProductScreen({ history, match }) {
                         <p>{review.comment}</p>
                       </ListGroup.Item>
                     ))}
-                    <ListGroup.Item>
-                      <h2>Write a Customer Review</h2>
-                      {loadingProductReview && <Loader />}
-                      {errorProductReview && (
-                        <Message variant="danger">{errorProductReview}</Message>
-                      )}
-                      {!userInfo ? (
-                        <Message>
-                          Please <Link to="/login">Sign In</Link> to write a
-                          review
-                        </Message>
-                      ) : (
-                        <Form onSubmit={submitHandler}>
-                          <Form.Group controlId="rating">
-                            <Form.Label>Rating</Form.Label>
-                            <Form.Control
-                              as="select"
-                              value={rating}
-                              onChange={(e) => setRating(e.target.value)}
-                            >
-                              <option value="">Select...</option>
-                              <option value="1">1 - Poor</option>
-                              <option value="2">2 - Fair</option>
-                              <option value="3">3 - Good</option>
-                              <option value="4">4 - Very good</option>
-                              <option value="5">5 - Excellent</option>
-                            </Form.Control>
-                          </Form.Group>
-                          <Form.Group controlId="comment">
-                            <Form.Label>Comment</Form.Label>
-                            <Form.Control
-                              as="textarea"
-                              row={3}
-                              value={comment}
-                              onChange={(e) => setComment(e.target.value)}
-                            ></Form.Control>
-                          </Form.Group>
-                          <Button type="submit" variant="primary">
-                            Submit
-                          </Button>
-                        </Form>
-                      )}
-                    </ListGroup.Item>
                   </ListGroup>
                 </>
               )}
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <h2>Write a Customer Review</h2>
+                  {loadingProductReview && <Loader />}
+                  {errorProductReview && (
+                    <Message variant="danger">{errorProductReview}</Message>
+                  )}
+                  {!userInfo ? (
+                    <Message>
+                      Please <Link to="/login">Sign In</Link> to write a review
+                    </Message>
+                  ) : (
+                    <Form onSubmit={submitHandler}>
+                      <Form.Group controlId="rating">
+                        <Form.Label>Rating</Form.Label>
+                        <Form.Control
+                          as="select"
+                          value={rating}
+                          onChange={(e) => setRating(e.target.value)}
+                        >
+                          <option value="">Select...</option>
+                          <option value="1">1 - Poor</option>
+                          <option value="2">2 - Fair</option>
+                          <option value="3">3 - Good</option>
+                          <option value="4">4 - Very good</option>
+                          <option value="5">5 - Excellent</option>
+                        </Form.Control>
+                      </Form.Group>
+                      <Form.Group controlId="comment">
+                        <Form.Label>Comment</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          row={3}
+                          value={comment}
+                          onChange={(e) => setComment(e.target.value)}
+                        ></Form.Control>
+                      </Form.Group>
+                      <Button type="submit" variant="primary">
+                        Submit
+                      </Button>
+                    </Form>
+                  )}
+                </ListGroup.Item>
+              </ListGroup>
             </Col>
           </Row>
         </>
