@@ -10,6 +10,8 @@ export default function Header() {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -28,6 +30,7 @@ export default function Header() {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i>Cart
+                  {cartItems.length !== 0 && <span>({cartItems.length})</span>}
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
